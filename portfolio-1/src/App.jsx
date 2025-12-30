@@ -131,7 +131,8 @@ function App() {
       cancelAnimationFrame(rafHandle);
     };
   }, [repeatCount]);
-
+  document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+  document.body.style.overflow = isModalOpen ? "hidden" : "auto";
   const showMenu = () => {
     // logic to show the marquee
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
