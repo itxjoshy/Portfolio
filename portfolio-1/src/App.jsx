@@ -1,5 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import image from "./assets/image.png";
+import prod1img from "./assets/mip.jpg";
+import prod2img from "./assets/liora.png";
+// import prod3img from "./assets/pep.png";
+// import prod4img from "./assets/ariks.png";
+import prod5img from "./assets/gridlock.png";
+import prod6img from "./assets/pokedex.png";
 import "./app.css";
 
 function App() {
@@ -30,20 +36,47 @@ function App() {
       icon: "https://cdn.simpleicons.org/tailwindcss/white",
     },
     {
+      name: "Firebase",
+      icon: "https://cdn.simpleicons.org/firebase/white",
+    },
+    {
       name: "Framer Motion",
       icon: "https://cdn.simpleicons.org/framer/white",
     },
+  ];
+  const projects = [
     {
-      name: "Git",
-      icon: "https://cdn.simpleicons.org/git/white",
+      name: "Project 1",
+      image: prod1img,
+      images: [prod1img, prod2img, prod5img],
     },
     {
-      name: "GitHub",
-      icon: "https://cdn.simpleicons.org/github/white",
+      name: "Project 2",
+      image: prod2img,
+      images: [prod2img, prod5img, prod6img],
+    },
+    {
+      name: "Project 3",
+      image: prod6img,
+      images: [prod6img, prod5img, prod2img],
+    },
+    {
+      name: "Project 4",
+      image: prod6img,
+      images: [prod6img, prod5img, prod2img],
+    },
+    {
+      name: "Project 5",
+      image: prod6img,
+      images: [prod6img, prod5img, prod2img],
     },
   ];
   const [repeatCount, setRepeatCount] = useState(12); // will grow if needed so the list covers the viewport
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
+  const [activeImage, setActiveImage] = useState(null);
   const items = Array.from(
     { length: repeatCount },
     (_, i) => baseItems[i % baseItems.length]
@@ -103,9 +136,56 @@ function App() {
     // logic to show the marquee
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };
+  const showModal = (cardId) => {
+    setActiveProject(projects[cardId]);
+    setActiveImage(projects[cardId].image);
+    // open modal
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setActiveProject(null);
+    setActiveImage(null);
+  };
 
   return (
     <>
+      <div className={`modal ${isModalOpen ? "modal-open" : ""}`}>
+        <button onClick={closeModal}>+</button>
+        {isModalOpen && activeProject && (
+          <div className="modal modal-open" onClick={closeModal}>
+            <div
+              className="modal-container"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-content">
+                {/* MAIN IMAGE */}
+                <img
+                  src={activeImage}
+                  alt={activeProject.name}
+                  className="modal-main-image"
+                />
+
+                {/* IMAGE SELECTOR */}
+                <div className="image-selector">
+                  {activeProject.images.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      alt=""
+                      onClick={() => setActiveImage(img)}
+                      className={img === activeImage ? "active-image" : ""}
+                    />
+                  ))}
+                </div>
+
+                <p>{activeProject.name}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
       <header>
         <button onClick={showMenu}>+</button>
       </header>
@@ -192,6 +272,27 @@ function App() {
               <li key={index}>
                 <img src={tech.icon} alt={tech.name} />
                 <span>{tech.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className="container">
+        <div className="projects-section">
+          <h2>Projects</h2>
+          <ul>
+            {projects.map((project, index) => (
+              <li
+                key={index}
+                data-id={index}
+                onClick={() => {
+                  showModal(index);
+                }}
+              >
+                <div className="info">
+                  <h3>{project.name}</h3>
+                </div>
+                <img src={project.image} alt={project.name} />
               </li>
             ))}
           </ul>
