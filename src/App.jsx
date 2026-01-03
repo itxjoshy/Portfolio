@@ -58,14 +58,14 @@ function App() {
       images: [prod3img, prod5img, prod2img],
     },
     {
-      name: "Pokedex",
-      image: prod3img,
-      images: [prod6img, prod5img, prod2img],
+      name: "Gridlock Analytica",
+      image: prod5img,
+      images: [prod5img, prod6img, prod2img],
     },
     {
-      name: "Gridlock Analytica",
-      image: prod6img,
-      images: [prod6img, prod5img, prod2img],
+      name: "Pokedex",
+      image: prod5img,
+      images: [prod5img, prod6img, prod2img],
     },
   ];
   const tabData = {
