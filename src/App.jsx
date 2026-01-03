@@ -56,7 +56,7 @@ function App() {
     {
       name: "PEP Energy",
       image: prod3img,
-      images: [prod6img, prod5img, prod2img],
+      images: [prod3img, prod5img, prod2img],
     },
     {
       name: "Pokedex",
