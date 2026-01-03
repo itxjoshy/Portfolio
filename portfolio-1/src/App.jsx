@@ -2,38 +2,31 @@ import React, { useRef, useEffect, useState } from "react";
 import image from "./assets/image.png";
 import prod1img from "./assets/mip.jpg";
 import prod2img from "./assets/liora.png";
-// import prod3img from "./assets/pep.png";
+import prod3img from "./assets/pep.png";
 // import prod4img from "./assets/ariks.png";
 import prod5img from "./assets/gridlock.png";
 import prod6img from "./assets/pokedex.png";
 import "./app.css";
+import { act } from "react";
 
 function App() {
   const baseItems = ["MIP", "Liora", "PEP", "Ariks Atelier", "ITXhub"]; // base item(s) to repeat
   const technologies = [
     {
-      name: "HTML",
-      icon: "https://cdn.simpleicons.org/html5/white",
-    },
-    {
-      name: "CSS",
-      icon: "https://cdn.simpleicons.org/css/white",
-    },
-    {
-      name: "JavaScript",
-      icon: "https://cdn.simpleicons.org/javascript/white",
+      name: "Vite",
+      icon: "https://cdn.simpleicons.org/vite/white",
     },
     {
       name: "React",
       icon: "https://cdn.simpleicons.org/react/white",
     },
     {
-      name: "Vue.js",
-      icon: "https://cdn.simpleicons.org/vue.js/white",
-    },
-    {
       name: "Tailwindcss",
       icon: "https://cdn.simpleicons.org/tailwindcss/white",
+    },
+    {
+      name: "JavaScript",
+      icon: "https://cdn.simpleicons.org/javascript/white",
     },
     {
       name: "Firebase",
@@ -46,37 +39,106 @@ function App() {
   ];
   const projects = [
     {
-      name: "Project 1",
+      name: "MIP Website",
       image: prod1img,
       images: [prod1img, prod2img, prod5img],
+      description: [
+        {
+          technologies: ["HTML", "CSS", "JS"],
+        },
+      ],
     },
     {
-      name: "Project 2",
+      name: "Liora - Ecommerce",
       image: prod2img,
       images: [prod2img, prod5img, prod6img],
     },
     {
-      name: "Project 3",
+      name: "PEP Energy",
+      image: prod3img,
+      images: [prod6img, prod5img, prod2img],
+    },
+    {
+      name: "Pokedex",
       image: prod6img,
       images: [prod6img, prod5img, prod2img],
     },
     {
-      name: "Project 4",
-      image: prod6img,
-      images: [prod6img, prod5img, prod2img],
-    },
-    {
-      name: "Project 5",
-      image: prod6img,
+      name: "Gridlock Analytica",
+      image: prod5img,
       images: [prod6img, prod5img, prod2img],
     },
   ];
+  const tabData = {
+    work: [
+      {
+        role: "lead front end engineer",
+        duration: "Dec 2024 - Now",
+        company: "MIP Cooperative",
+        location: "Nigeria",
+        description:
+          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
+      },
+      {
+        role: "lead front end engineer",
+        duration: "Dec 2025 - Now",
+        company: "PEP Energy",
+        location: "Nigeria",
+        description:
+          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
+      },
+      {
+        role: "lead front end engineer",
+        duration: "Dec 2024 - Now",
+        company: "MIP Cooperative",
+        location: "Nigeria",
+        description:
+          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
+      },
+      {
+        role: "lead front end engineer / designer",
+        duration: "Dec 2025 - Now",
+        company: "Liora Studios",
+        location: "Nigeria",
+        description:
+          "developed and manage a full ecomnmerce site for my clothing startup, implementing clean seamless UI/UX that allow users to easily access and operate the site ",
+      },
+    ],
+    education: [
+      {
+        role: "Bsc. computer science",
+        duration: "Oct 2023 - April 2027",
+        company: "Mewar International Univeristy",
+        location: "Nigeria",
+        description:
+          "Currently studying computer science as my undergraduate study at mewar international university - under a 50% scholarship",
+      },
+      {
+        role: "Web Development - Frontend",
+        duration: "Nov 2022 -  July 2023",
+        company: "Super Simple Dev",
+        location: "USA - Online",
+        description:
+          "Started my front end development journey, by completing the 'supersimpledev' frontend course, allowing me to have an understanding of front end practices",
+      },
+      {
+        role: "Harvard Cs50",
+        duration: "Oct 202 -  July 2023",
+        company: "Harvard Univeristy | EDx",
+        location: "USA - Online",
+        description:
+          "Took the popular cs50 - introduction to computer science course by harvard university (prior to university), where i learnt all the fundamentals of computer systems and how they operate. Additional courses include: introduction to Web dev, Artificial Inteligence",
+      },
+    ],
+  };
   const [repeatCount, setRepeatCount] = useState(12); // will grow if needed so the list covers the viewport
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
+  const [activeTab, setActiveTab] = useState(1);
+  const [activeTabContent, setActiveTabContent] = useState(tabData.work);
   const items = Array.from(
     { length: repeatCount },
     (_, i) => baseItems[i % baseItems.length]
@@ -133,6 +195,7 @@ function App() {
   }, [repeatCount]);
   document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+
   const showMenu = () => {
     // logic to show the marquee
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
@@ -278,6 +341,79 @@ function App() {
           </ul>
         </div>
       </section>
+      <section
+        className="container"
+        style={{
+          color: "black",
+        }}
+      >
+        <div className="tab-section">
+          <div className="tab-buttons">
+            <button
+              className={`button ${activeTab === 1 ? "active-btn" : ""}`}
+              onClick={() => {
+                setActiveTab(1);
+                setActiveTabContent(tabData.work);
+              }}
+            >
+              Experience
+            </button>
+            <button
+              className={`button ${activeTab === 2 ? "active-btn" : ""}`}
+              onClick={() => {
+                setActiveTab(2);
+                setActiveTabContent(tabData.education);
+              }}
+            >
+              Education
+            </button>
+          </div>
+          <div className="tab-content">
+            {activeTabContent.map((item, idx) => {
+              return (
+                <div key={idx} className="item">
+                  <li>{item.role}</li>
+                  <p className="duration__item">{item.duration}</p>
+                  <div className="location-info">
+                    <p
+                      style={{
+                        fontWeight: 600,
+                      }}
+                    >
+                      {item.company}
+                    </p>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 2,
+                      }}
+                    >
+                      <svg
+                        className="location__icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+                      </svg>
+                      <p
+                        style={{
+                          fontWeight: 600,
+                        }}
+                      >
+                        {item.location}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="description__item">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="container">
         <div className="projects-section">
           <h2>Projects</h2>
@@ -285,13 +421,28 @@ function App() {
             {projects.map((project, index) => (
               <li
                 key={index}
-                data-id={index}
                 onClick={() => {
                   showModal(index);
                 }}
               >
                 <div className="info">
-                  <h3>{project.name}</h3>
+                  <div className="info-content">
+                    <h3>{project.name}</h3>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                      }}
+                    >
+                      <button>
+                        <img
+                          src="https://cdn.simpleicons.org/github/black"
+                          alt="Github"
+                        />
+                      </button>
+                      <button> {"->"}</button>
+                    </div>
+                  </div>
                 </div>
                 <img src={project.image} alt={project.name} />
               </li>
