@@ -5,7 +5,7 @@ import prod2img from "./assets/liora.png";
 import prod3img from "./assets/pep.png";
 // import prod4img from "./assets/ariks.png";
 import prod5img from "./assets/gridlock.png";
-// import prod6img from "./assets/Pokedex.png";
+import prod6img from "./assets/gridlock.png";
 import "./app.css";
 import { act } from "react";
 
@@ -65,7 +65,7 @@ function App() {
     },
     {
       name: "Gridlock Analytica",
-      image: prod5img,
+      image: prod6img,
       images: [prod6img, prod5img, prod2img],
     },
   ];
