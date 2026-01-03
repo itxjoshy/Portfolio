@@ -5,7 +5,7 @@ import prod2img from "./assets/liora.png";
 import prod3img from "./assets/pep.png";
 // import prod4img from "./assets/ariks.png";
 import prod5img from "./assets/gridlock.png";
-import prod6img from "./assets/pokedex.png";
+import prod6img from "./assets/Pokedex.png";
 import "./app.css";
 import { act } from "react";
 
