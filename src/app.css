@@ -492,6 +492,9 @@ header button:hover {
   .projects-section {
     padding: 10px;
   }
+  .technologies-section {
+    padding: 10px;
+  }
   .projects-section ul {
     grid-template-columns: 1fr;
   }
