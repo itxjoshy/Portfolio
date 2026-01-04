@@ -535,7 +535,48 @@ header button:hover {
     font-size: 1.875rem;
   }
 }
+@media screen and (max-width: 900px) {
+  .marquee-container {
+    z-index: 13;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero {
+    img {
+      height: 100%;
+      border-radius: 8px;
+    }
+    .hero-content {
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      text-align: left;
+      justify-content: end;
+      z-index: 12;
+      padding-left: 60px;
+  
 
+    }
+
+  .hero-content p:nth-child(2) strong {
+      font-size:7rem;
+      color: white;
+  }
+    .hero-content p {
+      color: white;
+      font-size: 2rem;
+  
+  }
+  .hero-content  .location{
+margin-bottom: 7rem;
+  }
+}
 @media (min-width: 1024px) {
   .hero-content {
     padding: 4rem 6rem;
