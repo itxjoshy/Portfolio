@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
-import image from "./assets/image.png";
-import prod1img from "./assets/mip.jpg";
-import prod2img from "./assets/liora.png";
-import prod3img from "./assets/pep.png";
+import image from "/assets/image.png";
+import prod1img from "/assets/mip.jpg";
+import prod2img from "/assets/liora.png";
+import prod3img from "/assets/pep.png";
 // import prod4img from "./assets/ariks.png";
-import prod5img from "./assets/gridlock.png";
-import prod6img from "./assets/pokedex.png";
+import prod5img from "/assets/gridlock.png";
+import prod6img from "/assets/pokedex.png";
 
 import ProjectModal from "./components/projectModal";
 import "./app.css";
@@ -43,6 +43,12 @@ function App() {
       name: "MIP Website",
       image: prod1img,
       images: [prod1img, prod2img, prod5img],
+      displayIMG: [
+        "/assets/modal-img/liora/liora_4.png",
+        "/assets/modal-img/liora/liora_2.png",
+        "/assets/modal-img/liora/liora_3.png",
+      ],
+
       description: {
         technologies: ["HTML", "CSS", "JS"],
         summary:
@@ -56,9 +62,23 @@ function App() {
       },
     },
     {
-      name: "Liora - Ecommerce",
+      name: "Liora - Ecommerce (Fullstack)",
       image: prod2img,
-      images: [prod2img, prod5img, prod6img],
+      images: [
+        prod2img,
+        "/assets/modal-img/liora/liora_5.png",
+        "/assets/modal-img/liora/liora_6.png",
+        "/assets/modal-img/liora/liora_7.png",
+        "/assets/modal-img/liora/liora_8.png",
+        "/assets/modal-img/liora/liora_2.png",
+        "/assets/modal-img/liora/liora_4.png",
+      ],
+      displayIMG: [
+        "/assets/modal-img/liora/liora_4.png",
+        "/assets/modal-img/liora/liora_2.png",
+        "/assets/modal-img/liora/liora_3.png",
+      ],
+
       description: {
         technologies: ["react", "CSS", "JS", "firebase", "paystack"],
         summary:
@@ -77,6 +97,11 @@ function App() {
       name: "PEP Energy",
       image: prod3img,
       images: [prod3img, prod5img, prod2img],
+      displayIMG: [
+        "/assets/modal-img/pep/pep_1.png",
+        "/assets/modal-img/pep/pep_2.png",
+        "/assets/modal-img/pep/pep_3.png",
+      ],
       description: {
         technologies: ["react", "CSS", "JS"],
         summary:
@@ -93,6 +118,11 @@ function App() {
       name: "Gridlock Analytica",
       image: prod5img,
       images: [prod5img, prod6img, prod2img],
+      displayIMG: [
+        "/assets/modal-img/gridlock/gridlock_1.png",
+        "/assets/modal-img/gridlock/gridlock_2.png",
+        "/assets/modal-img/gridlock/gridlock_3.png",
+      ],
       description: {
         technologies: ["react", "CSS", "JS"],
         summary:
@@ -110,6 +140,11 @@ function App() {
       name: "Pokedex",
       image: prod5img,
       images: [prod5img, prod6img, prod2img],
+      displayIMG: [
+        "/assets/modal-img/pokedex/pokedex_1.png",
+        "/assets/modal-img/pokedex/pokedex_2.png",
+        "/assets/modal-img/pokedex/pokedex_3.png",
+      ],
       description: {
         technologies: ["HTML", "CSS", "JS", "pokeApi"],
         summary:

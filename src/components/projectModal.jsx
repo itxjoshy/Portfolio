@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function ProjectModal({
   isOpen,
@@ -9,7 +9,41 @@ function ProjectModal({
 }) {
   if (!isOpen || !project) return null;
   const { description } = project;
-  console.log(description);
+
+  const [localIndex, setLocalIndex] = useState(
+    project.images.indexOf(activeImage || project.images[0]) || 0
+  );
+  const thumbRefs = useRef([]);
+
+  useEffect(() => {
+    const idx = project.images.indexOf(activeImage);
+    if (idx >= 0) setLocalIndex(idx);
+  }, [activeImage, project.images]);
+
+  useEffect(() => {
+    const el = thumbRefs.current[localIndex];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [localIndex]);
+
+  const prev = () => {
+    const next =
+      (localIndex - 1 + project.images.length) % project.images.length;
+    setActiveImage(project.images[next]);
+    setLocalIndex(next);
+  };
+
+  const next = () => {
+    const nxt = (localIndex + 1) % project.images.length;
+    setActiveImage(project.images[nxt]);
+    setLocalIndex(nxt);
+  };
+
   return (
     <div className={`modal ${isOpen ? "modal-open" : ""}`}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -19,24 +53,57 @@ function ProjectModal({
           </button>
           <div className="modal_content">
             {/* MAIN IMAGE */}
-
             <img
               src={activeImage}
               alt={project.name}
               className="modal-main-image"
             />
-            {/* IMAGE SELECTOR */}
-            <div className="image-selector">
-              {project.images.map((img, idx) => (
-                <img
-                  key={idx}
-                  src={img}
-                  alt=""
-                  onClick={() => setActiveImage(img)}
-                  className={img === activeImage ? "active-image" : ""}
-                />
-              ))}
+
+            {/* IMAGE SELECTOR - carousel */}
+            <div className="carousel-wrapper">
+              <button
+                className="carousel-btn carousel-btn--left"
+                onClick={prev}
+                aria-label="Previous"
+              >
+                ‹
+              </button>
+              <div className="image-selector" role="list">
+                {project.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    ref={(el) => (thumbRefs.current[idx] = el)}
+                    src={img}
+                    alt={`thumbnail ${idx + 1}`}
+                    onClick={() => {
+                      setActiveImage(img);
+                      setLocalIndex(idx);
+                    }}
+                    className={
+                      img === activeImage
+                        ? "active-image carousel-thumb"
+                        : "carousel-thumb"
+                    }
+                    role="listitem"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        setActiveImage(img);
+                        setLocalIndex(idx);
+                      }
+                    }}
+                  />
+                ))}
+              </div>
+              <button
+                className="carousel-btn carousel-btn--right"
+                onClick={next}
+                aria-label="Next"
+              >
+                ›
+              </button>
             </div>
+
             <div className="description">
               <h2>{project.name}</h2>
               <ul>
@@ -47,17 +114,12 @@ function ProjectModal({
               <p>{description.summary}</p>
               <div className="insights">
                 <ul>
-                  {description.bullets.map((bullet, idx) => (
+                  {(description.bullets || []).map((bullet, idx) => (
                     <li key={idx}>{bullet}</li>
                   ))}
                 </ul>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: 10,
-                }}
-              >
+              <div style={{ display: "flex", gap: 10 }}>
                 <button>
                   <img
                     src="https://cdn.simpleicons.org/github/black"
@@ -67,7 +129,12 @@ function ProjectModal({
                 </button>
                 <button> {"->"}</button>
               </div>
-              <div className="image__bento"></div>
+
+              <div className="image__bento">
+                {project.displayIMG.map((img, idx) => (
+                  <img key={idx} src={img} alt="" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
