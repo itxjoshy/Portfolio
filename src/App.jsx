@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
-import image from "/assets/image.png";
-import prod1img from "/assets/mip.jpg";
+import heroImg from "/assets/image.png";
+import menuIconOpen from "./menu-icon-open.svg";
+import menuIconClose from "./menu-icon-close.svg";
+
 import prod2img from "/assets/liora.png";
 import prod3img from "/assets/pep.png";
-// import prod4img from "./assets/ariks.png";
 import prod5img from "/assets/gridlock.png";
 import prod6img from "/assets/pokedex.png";
 
@@ -41,7 +42,7 @@ function App() {
   const projects = [
     {
       name: "MIP Website",
-      image: "/assets/modal-img/mip/mip_9.png",
+      image: "/assets/modal-img/mip/mip_thumbnail.png",
       images: [
         "/assets/modal-img/mip/mip_1.png",
         "/assets/modal-img/mip/mip_2.png",
@@ -72,20 +73,20 @@ function App() {
     },
     {
       name: "Liora - Ecommerce (Fullstack)",
-      image: "/assets/modal-img/liora/liora_2.png",
+      image: "/assets/modal-img/liora/liora_thumbnail.png",
       images: [
         prod2img,
+        "/assets/modal-img/liora/liora_4.png",
         "/assets/modal-img/liora/liora_5.png",
         "/assets/modal-img/liora/liora_6.png",
         "/assets/modal-img/liora/liora_7.png",
-        "/assets/modal-img/liora/liora_8.png",
-        "/assets/modal-img/liora/liora_2.png",
-        "/assets/modal-img/liora/liora_4.png",
-      ],
-      displayIMG: [
-        "/assets/modal-img/liora/liora_4.png",
         "/assets/modal-img/liora/liora_2.png",
         "/assets/modal-img/liora/liora_3.png",
+      ],
+      displayIMG: [
+        "/assets/modal-img/liora/liora_3.png",
+        "/assets/modal-img/liora/liora_2.png",
+        "/assets/modal-img/liora/liora_1.png",
       ],
 
       description: {
@@ -104,7 +105,7 @@ function App() {
     },
     {
       name: "PEP Energy",
-      image: prod3img,
+      image: "/assets/modal-img/pep/pep_thumbnail.png",
       images: [prod3img, prod5img, prod2img],
       displayIMG: [
         "/assets/modal-img/pep/pep_1.png",
@@ -123,31 +124,10 @@ function App() {
         ],
       },
     },
-    {
-      name: "Gridlock Analytica",
-      image: prod5img,
-      images: [prod5img, prod6img, prod2img],
-      displayIMG: [
-        "/assets/modal-img/gridlock/gridlock_1.png",
-        "/assets/modal-img/gridlock/gridlock_2.png",
-        "/assets/modal-img/gridlock/gridlock_3.png",
-      ],
-      description: {
-        technologies: ["react", "CSS", "JS"],
-        summary:
-          "Implemented a React-based web application with a structured component hierarchy and responsive layouts. Emphasized UI consistency, efficient rendering, and clear separation of concerns for a data analytics–focused brand.",
-        bullets: [
-          "Built with React, CSS, JS",
-          "Structured component hierarchy",
-          "Responsive layouts",
-          "Emphasized UI consistency and efficient rendering",
-        ],
-      },
-    },
 
     {
       name: "Pokedex",
-      image: prod5img,
+      image: "/assets/modal-img/pokedex/pokedex_thumbnail.png",
       images: [prod5img, prod6img, prod2img],
       displayIMG: [
         "/assets/modal-img/pokedex/pokedex_1.png",
@@ -324,7 +304,9 @@ function App() {
         setActiveImage={setActiveImage}
       />
       <header>
-        <button onClick={showMenu}>+</button>
+        <button onClick={showMenu}>
+          <img src={isMenuOpen ? menuIconClose : menuIconOpen} alt="" />
+        </button>
       </header>
       <nav className={`menu ${isMenuOpen ? "menu--open" : ""}`}>
         <div className="quick-links">
@@ -380,7 +362,7 @@ function App() {
           </div>
         </div>
 
-        <img src={image} alt="portrait" />
+        <img src={heroImg} alt="portrait" />
 
         <div className="hero-content">
           <p>Hi, I’m</p>

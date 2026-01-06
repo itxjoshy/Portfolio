@@ -86,17 +86,6 @@ header button {
   z-index: 999;
 }
 
-header button:hover {
-  animation: rotate 0.5s linear;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .hero {
   position: relative;
   height: 100vh;
