@@ -41,12 +41,21 @@ function App() {
   const projects = [
     {
       name: "MIP Website",
-      image: prod1img,
-      images: [prod1img, prod2img, prod5img],
+      image: "/assets/modal-img/mip/mip_9.png",
+      images: [
+        "/assets/modal-img/mip/mip_1.png",
+        "/assets/modal-img/mip/mip_2.png",
+        "/assets/modal-img/mip/mip_3.png",
+        "/assets/modal-img/mip/mip_4.png",
+        "/assets/modal-img/mip/mip_5.png",
+        "/assets/modal-img/mip/mip_6.png",
+        "/assets/modal-img/mip/mip_7.png",
+        "/assets/modal-img/mip/mip_10.png",
+      ],
       displayIMG: [
-        "/assets/modal-img/liora/liora_4.png",
-        "/assets/modal-img/liora/liora_2.png",
-        "/assets/modal-img/liora/liora_3.png",
+        "/assets/modal-img/mip/mip_7.png",
+        "/assets/modal-img/mip/mip_9.png",
+        "/assets/modal-img/mip/mip_8.png",
       ],
 
       description: {
@@ -63,7 +72,7 @@ function App() {
     },
     {
       name: "Liora - Ecommerce (Fullstack)",
-      image: prod2img,
+      image: "/assets/modal-img/liora/liora_2.png",
       images: [
         prod2img,
         "/assets/modal-img/liora/liora_5.png",
@@ -294,7 +303,7 @@ function App() {
   };
   const showModal = (cardId) => {
     setActiveProject(projects[cardId]);
-    setActiveImage(projects[cardId].image);
+    setActiveImage(projects[cardId].images[0]);
     // open modal
     setIsModalOpen(true);
   };
