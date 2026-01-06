@@ -6,6 +6,8 @@ import prod3img from "./assets/pep.png";
 // import prod4img from "./assets/ariks.png";
 import prod5img from "./assets/gridlock.png";
 import prod6img from "./assets/pokedex.png";
+
+import ProjectModal from "./components/projectModal";
 import "./app.css";
 
 function App() {
@@ -41,33 +43,89 @@ function App() {
       name: "MIP Website",
       image: prod1img,
       images: [prod1img, prod2img, prod5img],
-      description: [
-        {
-          technologies: ["HTML", "CSS", "JS"],
-        },
-      ],
+      description: {
+        technologies: ["HTML", "CSS", "JS"],
+        summary:
+          "Built a responsive multi-page website using semantic HTML, modern CSS, and vanilla JavaScript. Implemented reusable layout components, responsive breakpoints, and basic DOM manipulation to enhance interactivity and usability across devices.",
+        bullets: [
+          "Built with HTML, CSS, JS",
+          "Responsive landing page for MIP Cooperative",
+          "Includes user registration form with smooth UX",
+          "Focused on clean UI, accessibility, and fast load times",
+        ],
+      },
     },
     {
       name: "Liora - Ecommerce",
       image: prod2img,
       images: [prod2img, prod5img, prod6img],
+      description: {
+        technologies: ["react", "CSS", "JS", "firebase", "paystack"],
+        summary:
+          "Developed a scalable e-commerce frontend using React with state-based cart management and dynamic product rendering. Integrated Firebase for data handling and Paystack for payment processing, ensuring secure transactions and a smooth checkout flow.",
+        bullets: [
+          "Built with React, CSS, JS, Firebase, Paystack",
+          "Dynamic product rendering",
+          "State-based cart management with dynamic product rendering",
+          "Integrated Firebase for data storage and management",
+          "Integrated Paystack for secure online payments",
+          "Optimized checkout flow for smooth user experience",
+        ],
+      },
     },
     {
       name: "PEP Energy",
       image: prod3img,
       images: [prod3img, prod5img, prod2img],
+      description: {
+        technologies: ["react", "CSS", "JS"],
+        summary:
+          "Created a performance-optimized React website with modular components and reusable UI patterns. Focused on clean component structure, responsive design, and maintainable styling for a corporate web presence.",
+        bullets: [
+          "Built with React, CSS, JS",
+          "Corporate site with modular React components",
+          "Responsive design with reusable UI patterns",
+          "Optimized for performance and maintainability",
+        ],
+      },
     },
     {
       name: "Gridlock Analytica",
       image: prod5img,
       images: [prod5img, prod6img, prod2img],
+      description: {
+        technologies: ["react", "CSS", "JS"],
+        summary:
+          "Implemented a React-based web application with a structured component hierarchy and responsive layouts. Emphasized UI consistency, efficient rendering, and clear separation of concerns for a data analytics–focused brand.",
+        bullets: [
+          "Built with React, CSS, JS",
+          "Structured component hierarchy",
+          "Responsive layouts",
+          "Emphasized UI consistency and efficient rendering",
+        ],
+      },
     },
+
     {
       name: "Pokedex",
       image: prod5img,
       images: [prod5img, prod6img, prod2img],
+      description: {
+        technologies: ["HTML", "CSS", "JS", "pokeApi"],
+        summary:
+          "Built an interactive web application that consumes the PokéAPI using asynchronous JavaScript (fetch/async–await). Implemented dynamic data rendering, search functionality, and basic error handling for API responses.",
+        bullets: [
+          "Built with HTML, CSS, JS, PokéAPI",
+          "Interactive web app consuming PokéAPI",
+          "Used fetch API to retrieve data from PokéAPI",
+          "Implemented search functionality for Pokémon",
+          "Implemented dynamic data rendering and search functionality",
+          "Includes error handling for API requests",
+        ],
+      },
     },
   ];
+
   const tabData = {
     work: [
       {
@@ -214,41 +272,13 @@ function App() {
 
   return (
     <>
-      <div className={`modal ${isModalOpen ? "modal-open" : ""}`}>
-        <button onClick={closeModal}>+</button>
-        {isModalOpen && activeProject && (
-          <div className="modal modal-open" onClick={closeModal}>
-            <div
-              className="modal-container"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="modal-content">
-                {/* MAIN IMAGE */}
-                <img
-                  src={activeImage}
-                  alt={activeProject.name}
-                  className="modal-main-image"
-                />
-
-                {/* IMAGE SELECTOR */}
-                <div className="image-selector">
-                  {activeProject.images.map((img, idx) => (
-                    <img
-                      key={idx}
-                      src={img}
-                      alt=""
-                      onClick={() => setActiveImage(img)}
-                      className={img === activeImage ? "active-image" : ""}
-                    />
-                  ))}
-                </div>
-
-                <p>{activeProject.name}</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      <ProjectModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        project={activeProject}
+        activeImage={activeImage}
+        setActiveImage={setActiveImage}
+      />
       <header>
         <button onClick={showMenu}>+</button>
       </header>
@@ -416,7 +446,7 @@ function App() {
       <section className="container">
         <div className="projects-section">
           <h2>Projects</h2>
-          <ul>
+          <ul className="projects-list">
             {projects.map((project, index) => (
               <li
                 key={index}
