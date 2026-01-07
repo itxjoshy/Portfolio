@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import closeIcon from "../menu-icon-close.svg";
+import linkIcon from "../link-icon.svg";
 import carouselLeft from "../carousel-left.svg";
 import carouselRight from "../carousel-right.svg";
 function ProjectModal({
@@ -9,20 +10,20 @@ function ProjectModal({
   activeImage,
   setActiveImage,
 }) {
-  if (!isOpen || !project) return null;
-  const { description } = project;
-
-  const [localIndex, setLocalIndex] = useState(
-    project.images.indexOf(activeImage || project.images[0]) || 0
-  );
   const thumbRefs = useRef([]);
+  const [localIndex, setLocalIndex] = useState(0);
 
   useEffect(() => {
-    const idx = project.images.indexOf(activeImage);
-    if (idx >= 0) setLocalIndex(idx);
-  }, [activeImage, project.images]);
+    if (!project || !project.images) return;
+
+    const idx = project.images.indexOf(activeImage ?? project.images[0]);
+
+    setLocalIndex(idx >= 0 ? idx : 0);
+  }, [activeImage, project]);
 
   useEffect(() => {
+    if (!project || !project.images) return;
+
     const el = thumbRefs.current[localIndex];
     if (el) {
       el.scrollIntoView({
@@ -31,7 +32,12 @@ function ProjectModal({
         block: "nearest",
       });
     }
-  }, [localIndex]);
+  }, [localIndex, project]);
+
+  // ✅ EARLY RETURN AFTER HOOKS
+  if (!isOpen || !project) return null;
+
+  const { description } = project;
 
   const prev = () => {
     const next =
@@ -48,12 +54,19 @@ function ProjectModal({
 
   return (
     <div className={`modal ${isOpen ? "modal-open" : ""}`}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-wrapper" onClick={onClose}>
+      <div className="modal-container">
+        <div className="modal-content-wrapper">
           <button onClick={onClose} className="close_button">
             <img src={closeIcon} alt="" />
           </button>
-          <div className="modal_content">
+          <div
+            className="modal_content"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                onClose();
+              }
+            }}
+          >
             {/* MAIN IMAGE */}
             <img
               src={activeImage}
@@ -121,15 +134,31 @@ function ProjectModal({
                   ))}
                 </ul>
               </div>
-              <div style={{ display: "flex", gap: 10 }}>
-                <button>
-                  <img
-                    src="https://cdn.simpleicons.org/github/black"
-                    alt="Github"
-                  />
-                  Github
-                </button>
-                <button> {"->"}</button>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 10,
+                }}
+              >
+                {project.links && project.links.github ? (
+                  <button
+                    onClick={() => window.open(project.links.github, "_blank")}
+                  >
+                    <p>Github</p>
+                    <img
+                      src="https://cdn.simpleicons.org/github/black"
+                      alt="Github"
+                    />
+                  </button>
+                ) : null}
+                {project.links && project.links.webpage ? (
+                  <button
+                    onClick={() => window.open(project.links.webpage, "_blank")}
+                  >
+                    <img src={linkIcon} alt="link-image" />
+                    <p>Demo</p>
+                  </button>
+                ) : null}
               </div>
 
               <div className="image__bento">

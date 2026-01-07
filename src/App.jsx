@@ -7,6 +7,7 @@ import prod2img from "/assets/liora.png";
 import prod3img from "/assets/pep.png";
 import prod5img from "/assets/gridlock.png";
 import prod6img from "/assets/pokedex.png";
+import cv from "/assets/audujosiah_CV.pdf";
 
 import ProjectModal from "./components/projectModal";
 import "./app.css";
@@ -66,12 +67,16 @@ function App() {
           "Focused on clean UI, accessibility, and fast load times",
         ],
       },
+      links: {
+        github: "https://github.com/itxjoshy/mip-coop-website",
+        webpage: "https://www.mipcooperative.com/",
+      },
     },
     {
       name: "Liora - Ecommerce (Fullstack)",
-      image: "/assets/modal-img/liora/liora_thumbnail.png",
+      image: "/assets/modal-img/liora/liora_2.png",
       images: [
-        prod2img,
+        "/assets/modal-img/liora/liora.png",
         "/assets/modal-img/liora/liora_4.png",
         "/assets/modal-img/liora/liora_5.png",
         "/assets/modal-img/liora/liora_6.png",
@@ -98,6 +103,10 @@ function App() {
           "Optimized checkout flow for smooth user experience",
         ],
       },
+      links: {
+        github: "https://github.com/itxjoshy/liora-website",
+        webpage: "https://liorastudios.vercel.app",
+      },
     },
     {
       name: "PEP Energy",
@@ -118,6 +127,10 @@ function App() {
           "Responsive design with reusable UI patterns",
           "Optimized for performance and maintainability",
         ],
+      },
+      links: {
+        github: "https://github.com/itxjoshy/PEP/",
+        webpage: "https://pepenergy.vercel.app/",
       },
     },
 
@@ -142,6 +155,10 @@ function App() {
           "Implemented dynamic data rendering and search functionality",
           "Includes error handling for API requests",
         ],
+      },
+      links: {
+        github: "https://github.com/itxjoshy/pokedex-App",
+        webpage: "https://pokedex-app-delta-ten.vercel.app",
       },
     },
   ];
@@ -270,8 +287,17 @@ function App() {
       cancelAnimationFrame(rafHandle);
     };
   }, [repeatCount]);
-  document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-  document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+  useEffect(() => {
+    if (isMenuOpen || isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen, isModalOpen]);
 
   const showMenu = () => {
     // logic to show the marquee
@@ -299,6 +325,7 @@ function App() {
         activeImage={activeImage}
         setActiveImage={setActiveImage}
       />
+
       <header>
         <button onClick={showMenu}>
           <img src={isMenuOpen ? menuIconClose : menuIconOpen} alt="" />
@@ -306,8 +333,12 @@ function App() {
       </header>
       <nav className={`menu ${isMenuOpen ? "menu--open" : ""}`}>
         <div className="quick-links">
-          <a href="#about">linkedIn</a>
-          <a href="#projects">Resume</a>
+          <a href="https://www.linkedin.com/in/josiahaudu/" target="_blank">
+            linkedIn
+          </a>
+          <a href={cv} target="_blank">
+            Resume
+          </a>
         </div>
         <ul>
           <li>
@@ -470,12 +501,7 @@ function App() {
           <h2>Projects</h2>
           <ul className="projects-list">
             {projects.map((project, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  showModal(index);
-                }}
-              >
+              <li key={index}>
                 <div className="info">
                   <div className="info-content">
                     <h3>{project.name}</h3>
@@ -485,19 +511,37 @@ function App() {
                         gap: 10,
                       }}
                     >
-                      <button>
-                        <img
-                          src="https://cdn.simpleicons.org/github/black"
-                          alt="Github"
-                        />
-                      </button>
-                      <button>
-                        <img src={linkIcon} alt="" />
-                      </button>
+                      {project.links && project.links.github ? (
+                        <button
+                          onClick={() =>
+                            window.open(project.links.github, "_blank")
+                          }
+                        >
+                          <img
+                            src="https://cdn.simpleicons.org/github/black"
+                            alt="Github"
+                          />
+                        </button>
+                      ) : null}
+                      {project.links && project.links.webpage ? (
+                        <button
+                          onClick={() =>
+                            window.open(project.links.webpage, "_blank")
+                          }
+                        >
+                          <img src={linkIcon} alt="link-image" />
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                 </div>
-                <img src={project.image} alt={project.name} />
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  onClick={() => {
+                    showModal(index);
+                  }}
+                />
               </li>
             ))}
           </ul>
