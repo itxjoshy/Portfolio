@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import heroImg from "/assets/image.png";
 import menuIconOpen from "./menu-icon-open.svg";
 import menuIconClose from "./menu-icon-close.svg";
-
+import linkIcon from "./link-icon.svg";
 import prod2img from "/assets/liora.png";
 import prod3img from "/assets/pep.png";
 import prod5img from "/assets/gridlock.png";
@@ -14,10 +14,6 @@ import "./app.css";
 function App() {
   const baseItems = ["MIP", "Liora", "PEP", "Ariks Atelier", "ITXhub"]; // base item(s) to repeat
   const technologies = [
-    {
-      name: "Vite",
-      icon: "https://cdn.simpleicons.org/vite/white",
-    },
     {
       name: "React",
       icon: "https://cdn.simpleicons.org/react/white",
@@ -495,7 +491,9 @@ function App() {
                           alt="Github"
                         />
                       </button>
-                      <button> {"->"}</button>
+                      <button>
+                        <img src={linkIcon} alt="" />
+                      </button>
                     </div>
                   </div>
                 </div>

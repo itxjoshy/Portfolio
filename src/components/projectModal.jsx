@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import closeIcon from "../menu-icon-close.svg";
+import carouselLeft from "../carousel-left.svg";
+import carouselRight from "../carousel-right.svg";
 function ProjectModal({
   isOpen,
   onClose,
@@ -47,9 +49,9 @@ function ProjectModal({
   return (
     <div className={`modal ${isOpen ? "modal-open" : ""}`}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-wrapper">
+        <div className="modal-content-wrapper" onClick={onClose}>
           <button onClick={onClose} className="close_button">
-            +
+            <img src={closeIcon} alt="" />
           </button>
           <div className="modal_content">
             {/* MAIN IMAGE */}
@@ -66,7 +68,7 @@ function ProjectModal({
                 onClick={prev}
                 aria-label="Previous"
               >
-                ‹
+                <img src={carouselLeft} alt="" />
               </button>
               <div className="image-selector" role="list">
                 {project.images.map((img, idx) => (
@@ -100,7 +102,7 @@ function ProjectModal({
                 onClick={next}
                 aria-label="Next"
               >
-                ›
+                <img src={carouselRight} alt="" />
               </button>
             </div>
 
