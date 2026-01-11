@@ -8,7 +8,7 @@ import prod3img from "/assets/pep.png";
 import prod5img from "/assets/gridlock.png";
 import prod6img from "/assets/pokedex.png";
 import cv from "/assets/audujosiah_CV.pdf";
-
+import StaggeredCards from "./components/StaggeredCards";
 import ProjectModal from "./components/projectModal";
 import "./app.css";
 
@@ -315,6 +315,9 @@ function App() {
     setActiveProject(null);
     setActiveImage(null);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -497,56 +500,55 @@ function App() {
       </section>
 
       <section className="container">
-        <div className="projects-section">
-          <h2>Projects</h2>
-          <ul className="projects-list">
-            {projects.map((project, index) => (
-              <li key={index}>
-                <div className="info">
-                  <div className="info-content">
-                    <h3>{project.name}</h3>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: 10,
-                      }}
-                    >
-                      {project.links && project.links.github ? (
-                        <button
-                          onClick={() =>
-                            window.open(project.links.github, "_blank")
-                          }
-                        >
-                          <img
-                            src="https://cdn.simpleicons.org/github/black"
-                            alt="Github"
-                          />
-                        </button>
-                      ) : null}
-                      {project.links && project.links.webpage ? (
-                        <button
-                          onClick={() =>
-                            window.open(project.links.webpage, "_blank")
-                          }
-                        >
-                          <img src={linkIcon} alt="link-image" />
-                        </button>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  onClick={() => {
-                    showModal(index);
-                  }}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <h2
+          style={{
+            color: "black",
+          }}
+        >
+          projects
+        </h2>
+        <StaggeredCards projects={projects} showModal={showModal} />
       </section>
+      <footer>
+        <div className="container">
+          {/* Top Section */}
+          <div className="top-section">
+            <div className="copyright">© 2022</div>
+            <button onClick={scrollToTop} className="back-to-top">
+              <span className="back-to-top-text">BACK TO TOP</span>
+              <div className="icon-circle">
+                <span className="arrow">↑</span>
+              </div>
+            </button>
+          </div>
+
+          {/* Main CTA Section */}
+          <div className="cta-section">
+            <h2 className="cta-heading">HAVE A PROJECT IN MIND?</h2>
+            <h1 className="main-heading">LET'S TALK</h1>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="bottom-section">
+            <div className="social-links">
+              <a href="#" className="social-button">
+                GITHUB
+              </a>
+              <a href="#" className="social-button">
+                LINKEDIN
+              </a>
+              <a href="#" className="social-button">
+                TWITTER
+              </a>
+            </div>
+            <div className="credits">
+              <p className="credit-text">
+                Design And Developed by <strong>Audu Josiah</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
