@@ -14,37 +14,37 @@ function StaggeredCards({ projects, showModal }) {
     <div className="projects-section">
       <ul className="left__column">
         {leftCol.map((object, index) => (
-          <li key={index} className={index}>
+          <li
+            key={index}
+            onClick={() => {
+              showModal(object.id);
+            }}
+          >
             <div className="info">
               <div className="info-content">
                 <h3>{object.project.name}</h3>
+                <p>{object.project.description.cardSummary}</p>
                 <div
                   style={{
                     display: "flex",
                     gap: 10,
+                    fontSize: 10,
                   }}
                 >
-                  {object.project.links && object.project.links.github ? (
-                    <button
-                      onClick={() =>
-                        window.open(object.project.links.github, "_blank")
-                      }
+                  {object.project.description.technologies.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="tech"
+                      style={{
+                        background: "white",
+                        borderRadius: 10,
+                        color: "black",
+                        padding: "5px 10px",
+                      }}
                     >
-                      <img
-                        src="https://cdn.simpleicons.org/github/black"
-                        alt="Github"
-                      />
-                    </button>
-                  ) : null}
-                  {object.project.links && object.project.links.webpage ? (
-                    <button
-                      onClick={() =>
-                        window.open(object.project.links.webpage, "_blank")
-                      }
-                    >
-                      <img src={linkIcon} alt="link-image" />
-                    </button>
-                  ) : null}
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -60,47 +60,42 @@ function StaggeredCards({ projects, showModal }) {
       </ul>
       <ul className="right__column">
         {rightCol.map((object, index) => (
-          <li key={index} className={index}>
+          <li
+            key={index}
+            className={index}
+            onClick={() => {
+              showModal(object.id);
+            }}
+          >
             <div className="info">
               <div className="info-content">
                 <h3>{object.project.name}</h3>
+                <p>{object.project.description.cardSummary}</p>
                 <div
                   style={{
                     display: "flex",
                     gap: 10,
+                    fontSize: 10,
                   }}
                 >
-                  {object.project.links && object.project.links.github ? (
-                    <button
-                      onClick={() =>
-                        window.open(object.project.links.github, "_blank")
-                      }
+                  {object.project.description.technologies.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="tech"
+                      style={{
+                        background: "white",
+                        borderRadius: 10,
+                        color: "black",
+                        padding: "5px 10px",
+                      }}
                     >
-                      <img
-                        src="https://cdn.simpleicons.org/github/black"
-                        alt="Github"
-                      />
-                    </button>
-                  ) : null}
-                  {object.project.links && object.project.links.webpage ? (
-                    <button
-                      onClick={() =>
-                        window.open(object.project.links.webpage, "_blank")
-                      }
-                    >
-                      <img src={linkIcon} alt="link-image" />
-                    </button>
-                  ) : null}
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-            <img
-              src={object.project.image}
-              alt={object.project.name}
-              onClick={() => {
-                showModal(object.id);
-              }}
-            />
+            <img src={object.project.image} alt={object.project.name} />
           </li>
         ))}
       </ul>

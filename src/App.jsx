@@ -66,6 +66,8 @@ function App() {
           "Includes user registration form with smooth UX",
           "Focused on clean UI, accessibility, and fast load times",
         ],
+        cardSummary:
+          "A responsive multi-page corporate website built with semantic HTML, modern CSS, and vanilla JavaScript.",
       },
       links: {
         github: "https://github.com/itxjoshy/mip-coop-website",
@@ -102,6 +104,8 @@ function App() {
           "Integrated Paystack for secure online payments",
           "Optimized checkout flow for smooth user experience",
         ],
+        cardSummary:
+          "A scalable React-based e-commerce platform with Firebase backend integration and Paystack payments.",
       },
       links: {
         github: "https://github.com/itxjoshy/liora-website",
@@ -127,6 +131,8 @@ function App() {
           "Responsive design with reusable UI patterns",
           "Optimized for performance and maintainability",
         ],
+        cardSummary:
+          "A clean, performance-focused corporate website built with React and modular, reusable components.",
       },
       links: {
         github: "https://github.com/itxjoshy/PEP/",
@@ -155,6 +161,8 @@ function App() {
           "Implemented dynamic data rendering and search functionality",
           "Includes error handling for API requests",
         ],
+        cardSummary:
+          "An interactive Pokédex web app consuming the PokéAPI with dynamic rendering and search functionality.",
       },
       links: {
         github: "https://github.com/itxjoshy/pokedex-App",
@@ -505,7 +513,7 @@ function App() {
             color: "black",
           }}
         >
-          projects
+          Projects
         </h2>
         <StaggeredCards projects={projects} showModal={showModal} />
       </section>
@@ -513,7 +521,7 @@ function App() {
         <div className="container">
           {/* Top Section */}
           <div className="top-section">
-            <div className="copyright">© 2022</div>
+            <div className="copyright">© 2026</div>
             <button onClick={scrollToTop} className="back-to-top">
               <span className="back-to-top-text">BACK TO TOP</span>
               <div className="icon-circle">
@@ -531,14 +539,22 @@ function App() {
           {/* Bottom Section */}
           <div className="bottom-section">
             <div className="social-links">
-              <a href="#" className="social-button">
+              <a
+                href="https://github.com/itxjoshy"
+                target="_blank"
+                className="social-button"
+              >
                 GITHUB
               </a>
-              <a href="#" className="social-button">
+              <a
+                href="https://www.linkedin.com/in/josiahaudu/"
+                target="_blank"
+                className="social-button"
+              >
                 LINKEDIN
               </a>
-              <a href="#" className="social-button">
-                TWITTER
+              <a href={cv} className="social-button">
+                RESUME
               </a>
             </div>
             <div className="credits">
