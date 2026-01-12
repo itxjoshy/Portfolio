@@ -839,12 +839,12 @@ header button {
   }
 }
 footer {
-  min-height: 100vh;
   background-color: #000000;
   padding: 60px 0 20px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   position: relative;
   overflow: hidden;
+  z-index: 1000;
 }
 footer::after {
   position: absolute;
@@ -858,6 +858,7 @@ footer::after {
   background: -webkit-linear-gradient(#eee, white, #333, black);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  z-index: -1;
 }
 footer .container {
   border: 1px solid rgba(255, 255, 255, 0.148);
@@ -867,7 +868,6 @@ footer .container {
   box-shadow: 0 0px 100px rgba(210, 210, 210, 0.095);
   margin-bottom: 20px;
   max-width: 1300px;
-  z-index: 10;
 }
 
 /* Top Section */

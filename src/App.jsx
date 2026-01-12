@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import heroImg from "/assets/image.png";
 import menuIconOpen from "./menu-icon-open.svg";
 import menuIconClose from "./menu-icon-close.svg";
-import linkIcon from "./link-icon.svg";
 import prod2img from "/assets/liora.png";
 import prod3img from "/assets/pep.png";
 import prod5img from "/assets/gridlock.png";
@@ -39,7 +38,7 @@ function App() {
   const projects = [
     {
       name: "MIP Website",
-      image: "/assets/modal-img/mip/mip_thumbnail.png",
+      image: "/assets/modal-img/mip/mip_1.png",
       images: [
         "/assets/modal-img/mip/mip_1.png",
         "/assets/modal-img/mip/mip_2.png",
@@ -76,7 +75,7 @@ function App() {
     },
     {
       name: "Liora - Ecommerce (Fullstack)",
-      image: "/assets/modal-img/liora/liora_2.png",
+      image: "/assets/modal-img/liora/liora.png",
       images: [
         "/assets/modal-img/liora/liora.png",
         "/assets/modal-img/liora/liora_4.png",
@@ -114,7 +113,7 @@ function App() {
     },
     {
       name: "PEP Energy",
-      image: "/assets/modal-img/pep/pep_thumbnail.png",
+      image: prod3img,
       images: [prod3img, prod5img, prod2img],
       displayIMG: [
         "/assets/modal-img/pep/pep_1.png",
@@ -142,7 +141,7 @@ function App() {
 
     {
       name: "Pokedex",
-      image: "/assets/modal-img/pokedex/pokedex_thumbnail.png",
+      image: prod6img,
       images: [prod5img, prod6img, prod2img],
       displayIMG: [
         "/assets/modal-img/pokedex/pokedex_1.png",
