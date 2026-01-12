@@ -9,7 +9,6 @@ function StaggeredCards({ projects, showModal }) {
   //left col
   const leftCol = indexProject.filter((projects, idx) => idx % 2 === 0);
   const rightCol = indexProject.filter((projects, idx) => idx % 2 !== 0);
-  console.log(leftCol);
   return (
     <div className="projects-section">
       <ul className="left__column">
