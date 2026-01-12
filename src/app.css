@@ -839,12 +839,16 @@ header button {
   }
 }
 footer {
+  height: 100vh;
   background-color: #000000;
   padding: 60px 0 20px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   position: relative;
   overflow: hidden;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 footer::after {
   position: absolute;
@@ -858,7 +862,7 @@ footer::after {
   background: -webkit-linear-gradient(#eee, white, #333, black);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  z-index: -1;
+  z-index: -12;
 }
 footer .container {
   border: 1px solid rgba(255, 255, 255, 0.148);
@@ -867,7 +871,10 @@ footer .container {
   padding: 30px 45px;
   box-shadow: 0 0px 100px rgba(210, 210, 210, 0.095);
   margin-bottom: 20px;
+
   max-width: 1300px;
+  background-color: black;
+  flex: 1.5;
 }
 
 /* Top Section */
