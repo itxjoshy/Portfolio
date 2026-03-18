@@ -3,9 +3,10 @@ import heroImg from "/assets/image.png";
 import menuIconOpen from "./menu-icon-open.svg";
 import menuIconClose from "./menu-icon-close.svg";
 import prod2img from "/assets/liora.png";
-import prod3img from "/assets/pep.png";
+import prod3img from "/assets/pokedex.png";
 import prod5img from "/assets/gridlock.png";
-import prod6img from "/assets/pokedex.png";
+import prod6img from "/assets/rccg.png";
+import prod7img from "/assets/byfegor.png";
 import cv from "/assets/audujosiah_CV.pdf";
 import StaggeredCards from "./components/StaggeredCards";
 import ProjectModal from "./components/projectModal";
@@ -112,9 +113,19 @@ function App() {
       },
     },
     {
-      name: "PEP Energy",
-      image: prod3img,
-      images: [prod3img, prod5img, prod2img],
+      name: "RCCG Website - CA",
+      image: prod6img,
+      images: [
+        prod6img,
+        "/assets/modal-img/rccg/rccg_1.png",
+        "/assets/modal-img/rccg/rccg_2.png",
+        "/assets/modal-img/rccg/rccg_3.png",
+        "/assets/modal-img/rccg/rccg_4.png",
+        "/assets/modal-img/rccg/rccg_5.png",
+        "/assets/modal-img/rccg/rccg_6.png",
+        "/assets/modal-img/rccg/rccg_7.png",
+        "/assets/modal-img/rccg/rccg_8.png",
+      ],
       displayIMG: [
         "/assets/modal-img/pep/pep_1.png",
         "/assets/modal-img/pep/pep_2.png",
@@ -123,30 +134,32 @@ function App() {
       description: {
         technologies: ["react", "CSS", "JS"],
         summary:
-          "Created a performance-optimized React website with modular components and reusable UI patterns. Focused on clean component structure, responsive design, and maintainable styling for a corporate web presence.",
+          "Created a performance-optimized React website with modular components and reusable UI patterns. Focused on clean component structure, responsive design, and maintainable styling for an appealing web presence.",
         bullets: [
           "Built with React, CSS, JS",
-          "Corporate site with modular React components",
+          "modular React components",
           "Responsive design with reusable UI patterns",
           "Optimized for performance and maintainability",
         ],
         cardSummary:
-          "A clean, performance-focused corporate website built with React and modular, reusable components.",
+          "A clean website built with React and modular, reusable components. For a church.",
       },
       links: {
-        github: "https://github.com/itxjoshy/PEP/",
-        webpage: "https://pepenergy.vercel.app/",
+        github: "https://github.com/itxjoshy/church-site-2/",
+        webpage: "https://rccgfountainoflife.ca",
       },
     },
 
     {
       name: "Pokedex",
-      image: prod6img,
-      images: [prod5img, prod6img, prod2img],
+      image: prod3img,
+      images: [
+        "/assets/modal-img/pokedex/pokedex_1.png",
+        "/assets/modal-img/pokedex/pokedex_2.png",
+      ],
       displayIMG: [
         "/assets/modal-img/pokedex/pokedex_1.png",
         "/assets/modal-img/pokedex/pokedex_2.png",
-        "/assets/modal-img/pokedex/pokedex_3.png",
       ],
       description: {
         technologies: ["HTML", "CSS", "JS", "pokeApi"],
@@ -165,6 +178,40 @@ function App() {
       },
       links: {
         github: "https://github.com/itxjoshy/pokedex-App",
+        webpage: "https://itxpokedexapp.vercel.app",
+      },
+    },
+    {
+      name: "Byfegor - Ecommerce",
+      image: prod7img,
+      images: [
+        prod7img,
+        "/assets/modal-img/byfegor/byfegor_1.png",
+        "/assets/modal-img/byfegor/byfegor_2.png",
+        "/assets/modal-img/byfegor/byfegor_3.png",
+        "/assets/modal-img/byfegor/byfegor_4.png",
+      ],
+      displayIMG: [
+        "/assets/modal-img/byfegor/byfegor_1.png",
+        "/assets/modal-img/byfegor/byfegor_2.png",
+        "/assets/modal-img/byfegor/byfegor_3.png",
+      ],
+      description: {
+        technologies: ["React", "CSS", "JS", "WhatsApp API"],
+        summary:
+          "Developed an Ecommerce website that allows users to purchase products online using the WhatsApp API to send custom messages directly to the vendor.",
+        bullets: [
+          "Built with React, CSS, JS, WhatsApp API",
+          "Ecommerce website with seamless user experience",
+          "Integrated WhatsApp API for direct communication with vendors",
+          "Implemented dynamic product listings",
+          "Optimized for mobile and desktop devices",
+        ],
+        cardSummary:
+          "An Ecommerce website that allows users to purchase products online using the whatsapp api to send custom messages directly to the vendor.",
+      },
+      links: {
+        github: "https://github.com/itxjoshy/pokedex-App",
         webpage: "https://pokedex-app-delta-ten.vercel.app",
       },
     },
@@ -172,6 +219,14 @@ function App() {
 
   const tabData = {
     work: [
+      {
+        role: "Cloud Operations Intern",
+        duration: "Feb 2026- Now",
+        company: "Galaxy Backbone",
+        location: "Nigeria",
+        description:
+          "developed and manage a full ecomnmerce site for my clothing startup, implementing clean seamless UI/UX that allow users to easily access and operate the site ",
+      },
       {
         role: "lead front end engineer",
         duration: "Dec 2024 - Now",
@@ -242,7 +297,7 @@ function App() {
   const [activeTabContent, setActiveTabContent] = useState(tabData.work);
   const items = Array.from(
     { length: repeatCount },
-    (_, i) => baseItems[i % baseItems.length]
+    (_, i) => baseItems[i % baseItems.length],
   );
   // refs & measurements
   const marqueeRef = useRef(null);
@@ -325,6 +380,12 @@ function App() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -352,13 +413,34 @@ function App() {
         </div>
         <ul>
           <li>
-            <a href="#about">About</a>
+            <a
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection("about");
+              }}
+            >
+              About
+            </a>
           </li>
           <li>
-            <a href="#projects">Projects</a>
+            <a
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection("projects");
+              }}
+            >
+              Projects
+            </a>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <a
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection("contact");
+              }}
+            >
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
@@ -435,6 +517,7 @@ function App() {
       </section>
       <section
         className="container"
+        id="about"
         style={{
           color: "black",
         }}
@@ -461,52 +544,54 @@ function App() {
             </button>
           </div>
           <div className="tab-content">
-            {activeTabContent.map((item, idx) => {
-              return (
-                <div key={idx} className="item">
-                  <li>{item.role}</li>
-                  <p className="duration__item">{item.duration}</p>
-                  <div className="location-info">
-                    <p
-                      style={{
-                        fontWeight: 600,
-                      }}
-                    >
-                      {item.company}
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 2,
-                      }}
-                    >
-                      <svg
-                        className="location__icon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
-                      </svg>
+            <ul className="tab-list">
+              {activeTabContent.map((item, idx) => {
+                return (
+                  <div key={idx} className="item">
+                    <li>{item.role}</li>
+                    <p className="duration__item">{item.duration}</p>
+                    <div className="location-info">
                       <p
                         style={{
                           fontWeight: 600,
                         }}
                       >
-                        {item.location}
+                        {item.company}
                       </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 2,
+                        }}
+                      >
+                        <svg
+                          className="location__icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+                        </svg>
+                        <p
+                          style={{
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item.location}
+                        </p>
+                      </div>
                     </div>
+                    <p className="description__item">{item.description}</p>
                   </div>
-                  <p className="description__item">{item.description}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="container">
+      <section className="container" id="projects">
         <h2
           style={{
             color: "black",
@@ -516,7 +601,7 @@ function App() {
         </h2>
         <StaggeredCards projects={projects} showModal={showModal} />
       </section>
-      <footer>
+      <footer id="contact">
         <div className="container">
           {/* Top Section */}
           <div className="top-section">
