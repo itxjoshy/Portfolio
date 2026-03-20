@@ -412,35 +412,29 @@ function App() {
           </a>
         </div>
         <ul>
-          <li>
-            <a
-              onClick={() => {
-                setIsMenuOpen(false);
-                scrollToSection("about");
-              }}
-            >
-              About
-            </a>
+          <li
+            onClick={() => {
+              setIsMenuOpen(false);
+              scrollToSection("about");
+            }}
+          >
+            About
           </li>
-          <li>
-            <a
-              onClick={() => {
-                setIsMenuOpen(false);
-                scrollToSection("projects");
-              }}
-            >
-              Projects
-            </a>
+          <li
+            onClick={() => {
+              setIsMenuOpen(false);
+              scrollToSection("projects");
+            }}
+          >
+            Projects
           </li>
-          <li>
-            <a
-              onClick={() => {
-                setIsMenuOpen(false);
-                scrollToSection("contact");
-              }}
-            >
-              Contact
-            </a>
+          <li
+            onClick={() => {
+              setIsMenuOpen(false);
+              scrollToSection("contact");
+            }}
+          >
+            Contact
           </li>
         </ul>
       </nav>
