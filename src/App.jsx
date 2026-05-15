@@ -402,7 +402,10 @@ function App() {
           <img src={isMenuOpen ? menuIconClose : menuIconOpen} alt="" />
         </button>
       </header>
-      <nav className={`menu ${isMenuOpen ? "menu--open" : ""}`}>
+      <nav
+        className={`menu ${isMenuOpen ? "menu--open" : ""}`}
+        onClick={() => setIsMenuOpen(false)}
+      >
         <div className="quick-links">
           <a href="https://www.linkedin.com/in/josiahaudu/" target="_blank">
             linkedIn
