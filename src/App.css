@@ -1107,8 +1107,14 @@ footer .container {
   .image__bento > * {
     object-fit: center;
   }
+  .menu ul {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
   .menu ul li {
-    font-size: 5rem;
-    height: 90px;
+    height: max-content;
+    font-size: 6rem;
+    line-height: 1;
   }
 }
