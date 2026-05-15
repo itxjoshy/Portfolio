@@ -127,9 +127,9 @@ function App() {
         "/assets/modal-img/rccg/rccg_8.png",
       ],
       displayIMG: [
-        "/assets/modal-img/pep/pep_1.png",
-        "/assets/modal-img/pep/pep_2.png",
-        "/assets/modal-img/pep/pep_3.png",
+        "/assets/modal-img/rccg/rccg_1.png",
+        "/assets/modal-img/rccg/rccg_2.png",
+        "/assets/modal-img/rccg/rccg_3.png",
       ],
       description: {
         technologies: ["react", "CSS", "JS"],
