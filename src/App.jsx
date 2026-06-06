@@ -220,36 +220,36 @@ function App() {
   const tabData = {
     work: [
       {
+        role: "Lead AI engineer",
+        duration: "Jan 2026 - April 2026",
+        company: "Icove - Teen Tech Organization",
+        location: "Nigeria",
+        description:
+          "I developed and integrated a serverless function that utilizes the hugging face llama 3.3 70b instruct (text only) api, with inbuilt streaming for the front end.",
+      },
+      {
         role: "Cloud Operations Intern",
-        duration: "Feb 2026- Now",
+        duration: "Feb 2026 - Jun 2026",
         company: "Galaxy Backbone",
         location: "Nigeria",
         description:
-          "developed and manage a full ecomnmerce site for my clothing startup, implementing clean seamless UI/UX that allow users to easily access and operate the site ",
+          "5 month internship at Nigerias leading tech IT infrastructure company, managed shared hosting servers and learnt about dns operations, virtualization and mail operations.",
       },
       {
-        role: "lead front end engineer",
-        duration: "Dec 2024 - Now",
-        company: "MIP Cooperative",
+        role: "front end engineer / designer",
+        duration: "Jan 2026 - Feb 2026",
+        company: "RCCG Canada",
         location: "Nigeria",
         description:
-          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
+          "developed and managed a site used to provide information about the church's services and events.",
       },
       {
-        role: "lead front end engineer",
+        role: "front end engineer / designer",
         duration: "Dec 2025 - Now",
         company: "PEP Energy",
-        location: "Nigeria",
+        location: "Canada - remote",
         description:
-          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
-      },
-      {
-        role: "lead front end engineer",
-        duration: "Dec 2024 - Now",
-        company: "MIP Cooperative",
-        location: "Nigeria",
-        description:
-          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly ",
+          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly.",
       },
       {
         role: "lead front end engineer / designer",
@@ -257,7 +257,16 @@ function App() {
         company: "Liora Studios",
         location: "Nigeria",
         description:
-          "developed and manage a full ecomnmerce site for my clothing startup, implementing clean seamless UI/UX that allow users to easily access and operate the site ",
+          "developed and manage a full ecomnmerce site for my clothing startup, implementing clean seamless UI/UX that allow users to easily access and operate the site.",
+      },
+
+      {
+        role: "front end engineer / designer",
+        duration: "Sep 2024 - Now",
+        company: "MIP Cooperative",
+        location: "Nigeria",
+        description:
+          "developed and manage a site used to inform the public about the services of the cooperative, with a form portal allowing users to register smoothly.",
       },
     ],
     education: [
@@ -279,7 +288,7 @@ function App() {
       },
       {
         role: "Harvard Cs50",
-        duration: "Oct 202 -  July 2023",
+        duration: "Oct 2020 -  July 2023",
         company: "Harvard Univeristy | EDx",
         location: "USA - Online",
         description:
